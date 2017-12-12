@@ -1,0 +1,17 @@
+
+body{
+  background-color: darkblue
+}
+
+
+
+.flash{
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  margin-top: 25%;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: -1px -1px 10px 10px white;
+  visibility: visible;
+}
