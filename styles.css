@@ -13,5 +13,5 @@ body{
   background-color: white;
   border-radius: 50%;
   box-shadow: -1px -1px 10px 10px white;
-  visibility: visible;
+  display: block;
 }
