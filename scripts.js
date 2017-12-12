@@ -1,13 +1,15 @@
-let dot = 1000
+let dot = 500
 let dash = dot * 3
 let space = dot
 let letterSpace = dash
 let wordSpace = dot * 7
 
 const morseCode = {
-  a: [dot,dash],
-  b: [dash,dot,dot, dot],
+  a: [dot, space, dash]
+  b: [dash, space, dot, space, dot, space, dot]
 }
+
+
 const light = document.querySelector('.flash')
 
 function lightOn(){
@@ -18,16 +20,16 @@ function lightOff(){
   light.style.display = "none"
 }
 
-// function showSymbol(symbol){
-//   lightOn()
-//   setTimeout(lightOff,symbol)
-// }
 
 
-let a = [dot, space, dash, space, dot]
+let word = [dot,space, dot, space, dash, space, dash]
 
-function myLoop (array,i) {
+
+
+function displayMessage (array,i = 0) {
+
   setTimeout(function () {
+    console.log(array[i])
     if(light.style.display === "none"){
       lightOn()
     }
@@ -36,16 +38,20 @@ function myLoop (array,i) {
     }
     i++;
     if (i <= array.length - 1) {
-        myLoop(array, i);
+        displayMessage(array, i);
     }
   }, array[i])
 }
 
 
+displayMessage(word)
+
+// displayLetter()
+// turn light off for a dash
+// display next letter
+// light off for a dash
 
 
-
-myLoop(a,0)
 // flash for one second
 // flash for 3 seconds
 // The length of a dot is 1 time unit
