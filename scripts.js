@@ -39,7 +39,6 @@ const morseCode = {
 function makeMorseCode(word){
   let letters = word.toLowerCase().split('')
   let morseWord = []
-
   letters.forEach(function(letter){
   if(letter === " "){
     morseWord.push(wordSpace)
@@ -48,7 +47,6 @@ function makeMorseCode(word){
     morseWord.push(letterSpace)
   })
   morseWord =  [].concat.apply([], morseWord)
-  // console.log(morseWord)
   return morseWord
 }
 
@@ -62,15 +60,12 @@ function lightOff(){
 
 
 function displayMessage (array,i = 0) {
-
   setTimeout(function () {
     if(light.style.display === "none"){
       lightOn()
-      console.log("Waited " + array[i] + " to turn on.")
     }
       else {
       lightOff()
-     console.log("Waited " + array[i] + " to turn off.")
     }
     i++;
     if(i <= array.length - 1) {
@@ -83,10 +78,9 @@ function displayMessage (array,i = 0) {
 
 button.addEventListener("click", function(){
   let input = document.querySelector('.user-input').value
+  lightOn()
   displayMessage(makeMorseCode(input))
-
- document.querySelector('.user-input').value = ""
-
+  document.querySelector('.user-input').value = ""
 })
 
 
