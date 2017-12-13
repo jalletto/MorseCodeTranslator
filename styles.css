@@ -3,13 +3,18 @@ body{
   background-color: darkblue
 }
 
+.light-container{
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  margin-top: 25%;
+}
+
 
 
 .flash{
   width: 10px;
   height: 10px;
-  margin: auto;
-  margin-top: 25%;
   background-color: white;
   border-radius: 50%;
   box-shadow: -1px -1px 10px 10px white;

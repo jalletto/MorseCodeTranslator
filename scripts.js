@@ -1,21 +1,43 @@
 const light = document.querySelector('.flash')
-let dot = 500
+const button = document.querySelector('button')
+
+let dot = 300
 let dash = dot * 3
 let space = dot
 let letterSpace = dash
 let wordSpace = dot * 7
 
 const morseCode = {
-  a: [dot, space, dash],
-  b: [dash, space, dot, space, dot, space, dot],
-  c: [dash, space, dot, space, dash, space, dot],
-  d: [dash, space, dot, space, dot],
-  e: [dot],
-  f: [dot, space, dot, space, dash, space, dot],
+  a:[dot, space, dash],
+  b:[dash, space, dot, space, dot, space, dot],
+  c:[dash, space, dot, space, dash, space, dot],
+  d:[dash, space, dot, space, dot],
+  e:[dot],
+  f:[dot, space, dot, space, dash, space, dot],
+  g:[dash, space, dash, space, dot],
+  h:[dot, space, dot, space, dot, space, dot],
+  i:[dot, space, dot],
+  j:[dot, space, dash, space, dash, space, dash],
+  k:[dash, space, dot, space, dash],
+  l:[dot, space, dash, space, dot, space, dot],
+  m:[dash, space, dash],
+  n:[dash, space, dot],
+  o:[dash, space, dash, space, dash],
+  p:[dot, space, dash, space, dash, space, dot],
+  q:[dash, space, dash, space, dot, space, dash],
+  r:[dot, space, dash, space,dot],
+  s:[dot, space, dot, space, dot],
+  t:[dash],
+  u:[dot, space, dot, space, dash],
+  v:[dot, space, dot, space, dot, space, dash],
+  w:[dot, space, dash, space, dash],
+  x:[dash, space, dot, space, dot, space, dash],
+  y:[dash, space, dot, space, dash, space, dash],
+  z:[dash, space, dash, space, dot, space, dot]
 }
 
 function makeMorseCode(word){
-  let letters = word.split('')
+  let letters = word.toLowerCase().split('')
   let morseWord = []
 
   letters.forEach(function(letter){
@@ -46,20 +68,28 @@ function displayMessage (array,i = 0) {
       lightOn()
       console.log("Waited " + array[i] + " to turn on.")
     }
-    else{
+      else {
       lightOff()
      console.log("Waited " + array[i] + " to turn off.")
     }
     i++;
-    if (i <= array.length - 1) {
+    if(i <= array.length - 1) {
         displayMessage(array, i);
-    }else {
+    } else {
       lightOff()
     }
   }, array[i])
 }
 
-displayMessage(makeMorseCode("ab"))
+button.addEventListener("click", function(){
+  let input = document.querySelector('.user-input').value
+  displayMessage(makeMorseCode(input))
+
+ document.querySelector('.user-input').value = ""
+
+})
+
+
 
 
 
