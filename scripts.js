@@ -7,7 +7,11 @@ let wordSpace = dot * 7
 
 const morseCode = {
   a: [dot, space, dash],
-  b: [dash, space, dot, space, dot, space, dot]
+  b: [dash, space, dot, space, dot, space, dot],
+  c: [dash, space, dot, space, dash, space, dot],
+  d: [dash, space, dot, space, dot],
+  e: [dot],
+  f: [dot, space, dot, space, dash, space, dot],
 }
 
 function makeMorseCode(word){
@@ -15,9 +19,14 @@ function makeMorseCode(word){
   let morseWord = []
 
   letters.forEach(function(letter){
+  if(letter === " "){
+    morseWord.push(wordSpace)
+  } else
     morseWord.push(morseCode[letter])
+    morseWord.push(letterSpace)
   })
   morseWord =  [].concat.apply([], morseWord)
+  // console.log(morseWord)
   return morseWord
 }
 
@@ -30,29 +39,31 @@ function lightOff(){
 }
 
 
-
-
-
-
-
 function displayMessage (array,i = 0) {
 
   setTimeout(function () {
-    console.log(array[i])
     if(light.style.display === "none"){
       lightOn()
+      console.log("Waited " + array[i] + " to turn on.")
     }
     else{
       lightOff()
+     console.log("Waited " + array[i] + " to turn off.")
     }
     i++;
     if (i <= array.length - 1) {
         displayMessage(array, i);
+    }else {
+      lightOff()
     }
   }, array[i])
 }
 
-console.log(makeMorseCode("aba"))
+displayMessage(makeMorseCode("ab"))
+
+
+
+
 
 // displayMessage(word)
 
